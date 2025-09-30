@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop Registration - WEBWORKS x LPU</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-top: 50px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .header .university {
+      font-size: 1.2rem;
+      color: #e2e8f0;
+      margin-bottom: 20px;
+    }
+
+    .workshop-info {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 30px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .workshop-info h2 {
+      color: #4ecdc4;
+      margin-bottom: 15px;
+    }
+
+    .registration-form {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #e2e8f0;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      height: 100px;
+      resize: vertical;
+    }
+
+    .workshop-selection {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .workshop-option {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .workshop-option:hover {
+      border-color: #4ecdc4;
+      transform: translateY(-2px);
+    }
+
+    .workshop-option.selected {
+      border-color: #ff6b6b;
+      background: rgba(255, 107, 107, 0.2);
+    }
+
+    .workshop-option h3 {
+      color: #4ecdc4;
+      margin-bottom: 10px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 25px;
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-btn">← Back to Home</a>
+    
+    <div class="header">
+      <h1>Workshop Registration</h1>
+      <div class="university">Lovely Professional University (LPU)</div>
+      <p>Join WEBWORKS for an exclusive web development workshop</p>
+    </div>
+
+    <div class="workshop-info">
+      <h2>Workshop Details</h2>
+      <p><strong>Date:</strong> March 15-16, 2025</p>
+      <p><strong>Time:</strong> 10:00 AM - 4:00 PM</p>
+      <p><strong>Venue:</strong> LPU Campus, Block 34, Computer Lab</p>
+      <p><strong>Duration:</strong> 2 Days Intensive Workshop</p>
+    </div>
+
+    <form class="registration-form" onsubmit="handleRegistration(event)">
+      <h2 style="margin-bottom: 25px; color: #4ecdc4;">Registration Form</h2>
+      
+      <div class="form-group">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number *</label>
+        <input type="tel" id="phone" name="phone" required>
+      </div>
+
+      <div class="form-group">
+        <label for="regNumber">LPU Registration Number *</label>
+        <input type="text" id="regNumber" name="regNumber" placeholder="e.g., 12345678" required>
+      </div>
+
+      <div class="form-group">
+        <label for="branch">Branch/Department *</label>
+        <select id="branch" name="branch" required>
+          <option value="">Select your branch</option>
+          <option value="CSE">Computer Science Engineering</option>
+          <option value="IT">Information Technology</option>
+          <option value="ECE">Electronics & Communication</option>
+          <option value="ME">Mechanical Engineering</option>
+          <option value="CE">Civil Engineering</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="year">Year of Study *</label>
+        <select id="year" name="year" required>
+          <option value="">Select year</option>
+          <option value="1">1st Year</option>
+          <option value="2">2nd Year</option>
+          <option value="3">3rd Year</option>
+          <option value="4">4th Year</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Select Workshop Track *</label>
+        <div class="workshop-selection">
+          <div class="workshop-option" onclick="selectWorkshop(this, 'frontend')">
+            <h3>Frontend Development</h3>
+            <p>HTML, CSS, JavaScript, React</p>
+          </div>
+          <div class="workshop-option" onclick="selectWorkshop(this, 'backend')">
+            <h3>Backend Development</h3>
+            <p>Node.js, Express, Database</p>
+          </div>
+          <div class="workshop-option" onclick="selectWorkshop(this, 'fullstack')">
+            <h3>Full Stack Development</h3>
+            <p>Complete web development</p>
+          </div>
+        </div>
+        <input type="hidden" id="workshopTrack" name="workshopTrack" required>
+      </div>
+
+      <div class="form-group">
+        <label for="experience">Programming Experience</label>
+        <select id="experience" name="experience">
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="expectations">What do you expect from this workshop?</label>
+        <textarea id="expectations" name="expectations" placeholder="Share your expectations and goals..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Register for Workshop</button>
+    </form>
+  </div>
+
+  <script>
+    function selectWorkshop(element, track) {
+      document.querySelectorAll('.workshop-option').forEach(option => {
+        option.classList.remove('selected');
+      });
+      element.classList.add('selected');
+      document.getElementById('workshopTrack').value = track;
+    }
+
+    function handleRegistration(event) {
+      event.preventDefault();
+      
+      const formData = new FormData(event.target);
+      const data = Object.fromEntries(formData);
+      
+      if (!data.workshopTrack) {
+        alert('Please select a workshop track');
+        return;
+      }
+      
+      // Simulate registration process
+      alert(`Thank you ${data.name}! Your registration for the ${data.workshopTrack} workshop at LPU has been submitted successfully. You will receive a confirmation email shortly.`);
+      
+      // Reset form
+      event.target.reset();
+      document.querySelectorAll('.workshop-option').forEach(option => {
+        option.classList.remove('selected');
+      });
+    }
+  </script>
+</body>
+</html>
